@@ -1,5 +1,9 @@
 # mongo-flask-test
 
+* POST /users
+* GET /users/{id}
+
+のみ実装したテスト用ユーザAPI
 ## Testing
 
 
