@@ -1,0 +1,17 @@
+aniso8601==8.0.0
+attrs==19.3.0
+Click==7.0
+dnspython==2.2.1
+Flask==1.0.2
+flask-restplus==0.11.0
+itsdangerous==1.1.0
+Jinja2==2.11.0
+jsonschema==3.2.0
+MarkupSafe==1.1.1
+pydantic==1.9.0
+pymongo==4.1.1
+pyrsistent==0.18.1
+pytz==2022.1
+six==1.12.0
+typing_extensions==4.2.0
+Werkzeug==0.16.1
