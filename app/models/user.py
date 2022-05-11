@@ -27,6 +27,6 @@ class UserRead(UserCreate):
 
 class UserReadWithPosts(UserRead):
     """
-    userコレクションモデル(READ)
+    userコレクションとpostコレクションのjoinモデル(READ)
     """
     posts: List[PostRead]
