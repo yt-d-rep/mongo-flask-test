@@ -2,6 +2,8 @@
 
 * POST /users
 * GET /users/{id}
+* POST /users/{id}/posts
+* GET /users/{id}/posts
 
 のみ実装したテスト用ユーザAPI
 ## Testing
