@@ -52,3 +52,4 @@ class DatabaseConstants():
     DB_DATABASE = os.environ["DB_DATABASE"]
     class Collections:
         user = "user"
+        post = "post"

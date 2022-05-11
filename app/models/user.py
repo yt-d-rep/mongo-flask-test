@@ -1,7 +1,8 @@
 from pydantic import BaseModel, Field
+from typing import List
 
-from app.models.custom_type import PydanticObjectId
-
+from app.modules.custom_type import PydanticObjectId
+from app.models.post import PostRead
 
 
 class UserCreate(BaseModel):
@@ -11,6 +12,12 @@ class UserCreate(BaseModel):
     name: str = Field(..., max_length=255, title="名前")
     age: int = Field(..., gt=0, lt=999, title="年齢")
 
+class UserRead(UserCreate):
+    """
+    userコレクションモデル(READ)
+    """
+    id: PydanticObjectId = Field(..., alias="_id", title="id")
+
     class Config:
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
@@ -18,8 +25,8 @@ class UserCreate(BaseModel):
             PydanticObjectId: lambda v: str(v),
         }
 
-class UserRead(UserCreate):
+class UserReadWithPosts(UserRead):
     """
     userコレクションモデル(READ)
     """
-    id: PydanticObjectId = Field(None, alias="_id", title="id")
+    posts: List[PostRead]

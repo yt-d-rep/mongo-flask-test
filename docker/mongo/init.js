@@ -7,6 +7,7 @@ db.createUser({
 });
 
 db.createCollection("user", {});
+db.createCollection("post", {});
 
 // var error = rs.initiate({
 //     _id: "rs0",
