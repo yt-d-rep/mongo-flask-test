@@ -10,12 +10,12 @@ def db_connection():
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            host = os.environ["DB_HOST"]
+            host = os.getenv("DB_HOST", "127.0.0.1")
             db = os.environ["DB_DATABASE"]
-            port = int(os.environ["DB_PORT"])
+            port = int(os.getenv("DB_PORT", "27017"))
             user = os.environ["DB_USER_NAME"]
             password = os.environ["DB_PASSWORD"]
-            rs = os.environ["DB_REPLICASET"]
+            rs = os.getenv("DB_REPLICASET", "rs0")
 
             if os.environ["STAGE"] == "local":
                 protocol = "mongodb"

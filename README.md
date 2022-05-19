@@ -2,6 +2,7 @@
 
 * POST /users
 * GET /users/{id}
+* GET /users/nearbyusers
 * POST /users/{id}/posts
 * GET /users/{id}/posts
 

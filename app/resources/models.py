@@ -1,3 +1,4 @@
+from doctest import Example
 from flask_restplus import fields
 
 
@@ -6,6 +7,7 @@ class UserModel:
     id = fields.String(title="id", example="627b0b577c20f68ccd2739f9", description="ID")
     name = fields.String(title="name", example="627b0b577c20f68ccd2739f9", description="名前")
     age = fields.Integer(title="age", example=1, description="年齢")
+    coordinates = fields.List(fields.Float(), title="coordinates")
 
     def __init__(self, api):
         self.api = api
@@ -16,6 +18,14 @@ class UserModel:
             model={
                 self.name.title: self.name,
                 self.age.title: self.age,
+                "location": fields.Nested(
+                    self.api.model(
+                        name="Location",
+                        model={
+                            self.coordinates.title: self.coordinates,
+                        },
+                    ),
+                ),
             }
         )
 
@@ -26,6 +36,14 @@ class UserModel:
                 self.id.title: self.id,
                 self.name.title: self.name,
                 self.age.title: self.age,
+                "location": fields.Nested(
+                    self.api.model(
+                        name="Location",
+                        model={
+                            self.coordinates.title: self.coordinates,
+                        },
+                    ),
+                ),
             }
         )
 

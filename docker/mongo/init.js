@@ -1,3 +1,4 @@
+// Create users
 db.createUser({
     user: "local",
     pwd: "local",
@@ -6,14 +7,11 @@ db.createUser({
     ],
 });
 
+// Create collections
 db.createCollection("user", {});
 db.createCollection("post", {});
 
-// var error = rs.initiate({
-//     _id: "rs0",
-//     members: [
-//         {_id: 0, host: "mongo-primary:27017"},
-//         {_id: 1, host: "mongo-secondary:27017"},
-//     ],
-// })
-// printjson(error)
+// Create Indexes
+db.user.createIndex({"location": "2d"});
+
+db.user.find({location: {$near: [139.684011, 35.740095], $minDistance: 0, $maxDistance: 10}})
