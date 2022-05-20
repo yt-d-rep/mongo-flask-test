@@ -1,0 +1,42 @@
+version: "3.9"
+
+x-conf: &conf
+  image: mongo:5.0.7
+  restart: always
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: root
+    MONGO_INITDB_ROOT_PASSWORD: root
+    MONGO_INITDB_DATABASE: sample
+  volumes:
+    - ./replicaset.key:/etc/replicaset.key
+  command: --keyFile /etc/replicaset.key --replSet rs0
+
+services:
+  mongo-primary:
+    ports: 
+      - "27017:27017"
+    <<: *conf
+
+  mongo-secondary:
+    ports: 
+      - "27018:27017"
+    <<: *conf
+
+  mongo-tertiary:
+    ports:
+      - "27019:27017"
+    <<: *conf
+
+  mongo-arbiter:
+    ports:
+      - 27020:27017
+    <<: *conf
+
+  migrate:
+    image: migrate/migrate:v4.15.2
+    entrypoint: sh
+    tty: true
+    volumes:
+      - .:/var/task
+    working_dir: /var/task
+    command: ""

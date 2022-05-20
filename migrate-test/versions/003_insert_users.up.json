@@ -1,0 +1,19 @@
+[
+    {
+        "delete": "users",
+        "deletes": [{"q": {}, "limit": 0}]
+    },
+    {
+        "insert": "users",
+        "documents": [
+            {
+                "name": "Taro",
+                "age": 26
+            },
+            {
+                "name": "Kota",
+                "age": 32
+            }
+        ]
+    }
+]

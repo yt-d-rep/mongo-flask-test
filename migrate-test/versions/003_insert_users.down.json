@@ -1,0 +1,6 @@
+[
+    {
+        "delete": "users",
+        "deletes": [{"q": {}, "limit": 0}]
+    }
+]

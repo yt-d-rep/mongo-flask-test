@@ -1,0 +1,12 @@
+[
+    {
+      "createUser": "local",
+      "pwd": "local",
+      "roles": [
+        {
+          "role": "readWrite",
+          "db": "local"
+        }
+      ]
+    }
+]

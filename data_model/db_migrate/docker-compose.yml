@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  
+  db-migrate:
+    image: migrate/migrate:v4.15.2
+    volumes:
+      - ./:/var/task
+    command: >
+      -path=/var/task/versions \
+      -database ${DRIVER}://${DB_HOST}:${DB_PORT}/${DB_DATABASE} up
